@@ -55,7 +55,7 @@ router.post('/signup', async (req, res, next) => {
       name,
       surname,
       dni,
-      //avatar: req.file.path
+      avatar: req.file.path
     });
     res.status(201).json()
   }
@@ -118,6 +118,6 @@ router.post('/login', async (req, res, next) => {
 
 //GET "api/auth/verify" => Check that the token is valid
 router.get('/verify', isAuthenticated, (req, res, next) => {
-  res.json(req.payload;
+  res.json(req.payload);
 });
 module.exports = router;

@@ -24,7 +24,7 @@ const ownerSchema = new Schema(
       required: true,
       unique: true,
     },
-    avatar: {
+    image: {
       type: String,
       default: "https://res.cloudinary.com/djersm2h6/image/upload/v1661181085/petsdiary/avatar_zusyq9.png"
     },
