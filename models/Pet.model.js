@@ -5,6 +5,11 @@ const petSchema = new Schema (
     name: String,
     breed: String,
     birthday: Number,
+    species:{
+      type: String,
+      enum: [Dog, Cat, Bird, Rabbit, Guinea-pig, Ferret, Pig, Horse, Other]
+    },
+    otherspices: String,
     chip: Number,
     image: {
       type: String,

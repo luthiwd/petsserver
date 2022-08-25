@@ -15,7 +15,7 @@ router.get('/:id', isAuthenticated, async (req, res, next) => {
 });
 
 //PATCH 'api/profile' => UPDATE PROFILE
-router.patch('/:id/edit', isAuthenticated, uploader.single('image'), (req, res, next) => {
+router.patch('/:id/edit', isAuthenticated, uploader.single('image'),async (req, res, next) => {
   const { username, email, image, name, surname, password } = req.body
   const { id } = req.params
 
@@ -34,7 +34,7 @@ router.patch('/:id/edit', isAuthenticated, uploader.single('image'), (req, res, 
     await OwnerModel.findByIdAndUpdate(id, {
       username,
       email,
-      image,
+      image: req.file.path,
       name,
       surname,
       password: hashPassword

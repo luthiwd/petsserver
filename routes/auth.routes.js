@@ -55,7 +55,7 @@ router.post('/signup', async (req, res, next) => {
       name,
       surname,
       dni,
-      avatar: req.file.path
+      image: req.file.path
     });
     res.status(201).json()
   }
@@ -101,7 +101,7 @@ router.post('/login', async (req, res, next) => {
       _id: foundUser._id,
       email: foundUser.email,
       username: foundUser.username,
-      avatar: foundUser.avatar
+      image: foundUser.avatar
     };
 
     //CONTROL OF TOKEN
@@ -120,4 +120,5 @@ router.post('/login', async (req, res, next) => {
 router.get('/verify', isAuthenticated, (req, res, next) => {
   res.json(req.payload);
 });
+
 module.exports = router;
