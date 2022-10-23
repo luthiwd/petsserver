@@ -56,7 +56,15 @@ router.patch('/:id/edit', isAuthenticated, async (req, res, next) => {
   const { name, breed, birthday, chip, image, spices, otherspices } = req.body;
   //UPDATE 
   try{
-
+    let updatePet = await PetModel.findByIdAndUpdate(id, {
+      name,
+      breed,
+      birthday,
+      chip,
+      image,
+      spices,
+      otherspices
+    })
   }catch (error) {
     res.json(error)
   }
@@ -65,10 +73,10 @@ router.patch('/:id/edit', isAuthenticated, async (req, res, next) => {
 //DELETE '/api/pet/:id/delete' => DELETE A PET
 router.delete('/:id', isAuthenticated, async (req,res,next) => {
   const { id } = req.params;
-  //DELETE A PET BY ID
+  //DELETE A PET BY ID AND SHOW PET NAME TO DELETE OF BD
   try{
-    await PetModel.findByIdAndDelete(id);
-    res.json('Pet has been deleted')
+    let petDelete = await PetModel.findByIdAndDelete(id);
+    res.json(`${petDelete.name} has been deleted`)
   }catch (error){
     res.json(error)
   }

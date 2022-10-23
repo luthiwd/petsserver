@@ -11,11 +11,13 @@ const authRoutes = require ('./auth.routes')
 router.use('/auth', authRoutes)
 //ROUTE PROFILE
 const profileRoutes = require ('./profile.routes')
-router.use('/profileRoutes', profileRoutes)
+router.use('/profile', profileRoutes)
 //ROUTE UPLOADER IMAGE TO CLOUDINARY
 const uploaderRoutes = require ('./uploader.routes')
 router.use('/uploader', uploaderRoutes)
-
+//ROUTE PET
+const petRoutes = require ('./pet.routes')
+router.use('/pet', petRoutes)
 
 
 module.exports = router;

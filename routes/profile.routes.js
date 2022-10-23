@@ -3,7 +3,7 @@ const OwnerModel = require("../models/Owner.model")
 const uploader = require("../middlewares/uploader")
 const isAuthenticated = require ("../middlewares/isAuthenticated")
 
-//GET 'api/profile' => DISPLAY PROFILE
+//GET 'api/profile/:id' => DISPLAY PROFILE
 router.get('/:id', isAuthenticated, async (req, res, next) => {
   const { _id } = req.payload
   try{
@@ -14,7 +14,7 @@ router.get('/:id', isAuthenticated, async (req, res, next) => {
   }
 });
 
-//PATCH 'api/profile' => UPDATE PROFILE
+//PATCH 'api/profile/:id/edit' => UPDATE PROFILE
 router.patch('/:id/edit', isAuthenticated, uploader.single('image'),async (req, res, next) => {
   const { username, email, image, name, surname, password } = req.body
   const { id } = req.params
